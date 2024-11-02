@@ -47,6 +47,8 @@ async function init() {
     }
 }
 
+require("./ROUTER/auth.route")(app); //callig routes annd pasing objects
+
 app.listen(serverjs.PORT, () => {
     console.log("Server is started and running at the PORT:", serverjs.PORT);
 });
