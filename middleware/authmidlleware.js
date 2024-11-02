@@ -42,4 +42,18 @@ const usermodel = require("../MODEL/usermodel");
         });
     }
 };
-module.exports={authVerify}
+
+const loginCheck =(req,res ,next)=>{
+    if (!req.body.userid) {
+        return res.status(400).send({
+            message: "userid is not defined"
+        });
+    }
+    if (!req.body.password) {
+        return res.status(400).send({
+            message: "password is not defined"
+        });
+    }
+    next();
+}
+module.exports={authVerify,loginCheck}
