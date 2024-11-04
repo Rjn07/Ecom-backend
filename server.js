@@ -5,7 +5,9 @@ const dbconfig = require("./config/dbconfig");
 const user_model = require('./MODEL/usermodel'); // Ensure this is correctly imported
 const bcrypt = require("bcrypt");
 
+
 const app = express();
+ 
 
 // Middleware to parse JSON
 app.use(express.json());

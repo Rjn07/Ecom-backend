@@ -81,6 +81,8 @@ const signup = async (req, res) => {
 
 
 const jwt = require("jsonwebtoken");
+const catiegeorymodel = require("../MODEL/catiegeorymodel");
+
 
 
 const login = async (req, res) => {
@@ -130,4 +132,28 @@ const login = async (req, res) => {
     }
 };
 
-module.exports ={signup,login}
+
+
+const categoryCreate = async (req, res) => {
+    // Read the data from the request body
+    const categoryObj = {
+        name: req.body.name,
+        description: req.body.description
+    };
+
+    // Insert into MongoDB
+    try {
+        const category = await catiegeorymodel.create(categoryObj);
+        return res.status(200).send(category);
+    } catch (error) {
+        console.error("Error during creating category:", error);
+        return res.status(500).send({
+            message: "An error occurred during category creation",
+        });
+    }
+};
+
+  
+
+
+module.exports ={signup,login,categoryCreate}
